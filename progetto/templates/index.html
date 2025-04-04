@@ -3,19 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Document</title>
 </head>
 <body>
+    <h1>La tua Lista della Spesa</h1>
     {% if lista %}
         <ul>
-<!-- itera sugli elementi della lista e li visualizza -->
             {% for elemento in lista %}
-                <li>{{ elemento }} <!-- visualizza l'elemento --></li>
+                <li>
+                    {{ elemento }}
+                    <form action="/rimuovi/{{ loop.index0 }}" method="post"style="display:inline;">
+                        <button type="submit">Rimuovi</button>
+                    </form>
+                </li>
             {% endfor %}
         </ul>
     {% else %}
-<!-- messaggio se la lista è vuota -->
         <p>La lista è vuota.</p>
     {% endif %}
+    <form action="/aggiungi" method="post">
+        <input type="text" name="elemento" placeholder="Aggiungi un elemento"required>
+        <button type="submit">Aggiungi</button>
+    </form>
+    <form action="/svuota" method="post">
+        <button type="submit">Svuota</button>
+    </form>
 </body>
 </html>
