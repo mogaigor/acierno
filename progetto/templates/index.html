@@ -6,6 +6,16 @@
     <title>Document</title>
 </head>
 <body>
-    <p>per ora funziona tutto</p>
+    {% if lista %}
+        <ul>
+<!-- itera sugli elementi della lista e li visualizza -->
+            {% for elemento in lista %}
+                <li>{{ elemento }} <!-- visualizza l'elemento --></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+<!-- messaggio se la lista è vuota -->
+        <p>La lista è vuota.</p>
+    {% endif %}
 </body>
 </html>
